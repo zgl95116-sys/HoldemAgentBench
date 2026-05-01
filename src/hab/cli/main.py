@@ -16,6 +16,25 @@ app = typer.Typer(
 )
 
 
+def _version_callback(value: bool) -> None:
+    if value:
+        typer.echo(__version__)
+        raise typer.Exit()
+
+
+@app.callback()
+def _root(
+    version: bool = typer.Option(
+        None,
+        "--version",
+        callback=_version_callback,
+        is_eager=True,
+        help="Show the HAB version and exit.",
+    ),
+) -> None:
+    """HoldemAgentBench — AI agents at the poker table."""
+
+
 @app.command("init")
 def init():
     """Set up ~/.hab/config.yaml."""

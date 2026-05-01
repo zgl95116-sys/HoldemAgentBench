@@ -57,6 +57,11 @@ async def test_e2e_mock_vs_mock_runs_to_completion(tmp_path: Path):
     assert summary["decisions_recorded"] > 0
     assert summary["decision_summary"]["overall"]["valid_actions"] > 0
     assert (session.session_dir / "decision_log.jsonl").exists()
+    # All-mock sessions should report agent_runtime as "mock", not the
+    # configured default — otherwise the public bundle misleads readers.
+    assert summary["agent_runtime"] == "mock"
+    assert summary["agent_security"]["permission_mode"] == "n/a"
+    assert summary["agent_security"]["environment"] == "n/a"
 
 
 @pytest.mark.asyncio

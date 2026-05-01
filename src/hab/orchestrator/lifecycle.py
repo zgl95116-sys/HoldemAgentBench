@@ -181,6 +181,11 @@ class HABSession:
                 elif self.progress:
                     self.progress.session_done()
 
+        all_mock = bool(self.config.players) and all(
+            m.startswith("mock://") for m in self.config.players.values()
+        )
+        effective_runtime = "mock" if all_mock else self.config.agent_runtime
+
         summary_path = self.session_dir / "session_summary.json"
         summary_path.write_text(json.dumps({
             "session_id": self.session_id,
@@ -191,7 +196,7 @@ class HABSession:
             "big_blind": self.config.big_blind,
             "starting_stack": self.config.starting_stack,
             "duplicate_templates_enabled": self.config.duplicate_templates,
-            "agent_runtime": self.config.agent_runtime,
+            "agent_runtime": effective_runtime,
             "duplicate_mode": (
                 "template_rotation" if self.config.duplicate_templates else None
             ),
@@ -201,13 +206,14 @@ class HABSession:
                 else "continuous_stack"
             ),
             "agent_security": {
-                "environment": "allowlist",
+                "environment": "n/a" if all_mock else "allowlist",
                 "unsafe_permissions": self.config.unsafe_skip_permissions,
                 "permission_mode": (
-                    "in_process_tool_executor"
+                    "n/a"
+                    if all_mock
+                    else "in_process_tool_executor"
                     if self.config.agent_runtime == "openrouter"
-                    else
-                    "bypassPermissions"
+                    else "bypassPermissions"
                     if self.config.unsafe_skip_permissions
                     else "acceptEdits_with_tool_allowlist"
                 ),
