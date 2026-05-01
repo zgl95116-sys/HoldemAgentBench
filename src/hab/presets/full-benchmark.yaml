@@ -1,0 +1,15 @@
+preset:
+  name: full-benchmark
+  estimated_cost_usd: 200
+  estimated_time_min: 600
+session:
+  format: 6-max
+  hands_target: 5000
+game:
+  small_blind: 1
+  big_blind: 2
+  starting_stack: 200
+tables:
+  count: 1
+evaluation:
+  variance_reduction: duplicate

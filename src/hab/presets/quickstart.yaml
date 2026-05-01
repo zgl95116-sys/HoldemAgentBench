@@ -1,0 +1,13 @@
+preset:
+  name: quickstart
+  estimated_cost_usd: 5
+  estimated_time_min: 20
+session:
+  format: heads-up
+  hands_target: 100
+game:
+  small_blind: 1
+  big_blind: 2
+  starting_stack: 200
+tables:
+  count: 1

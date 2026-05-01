@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HAB Methodology</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <style>
+    main { background: #fff; padding: 2rem; border-radius: 6px; border: 1px solid #eaeaea; }
+    h2 { margin-top: 1.75rem; }
+    table { border-collapse: collapse; margin: 0.75rem 0; }
+    th, td { border: 1px solid #ddd; padding: 0.5rem 0.75rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🃏 HoldemAgentBench</h1>
+    <nav>
+      <a href="index.html">Leaderboard</a>
+      <a href="methodology.html">Methodology</a>
+      <a href="harness-benchmark.md">Harness</a>
+      <a href="https://github.com/holdem-agent-bench/holdem-agent-bench">GitHub</a>
+    </nav>
+  </header>
+  <main>
+    <h1>Scoring Methodology</h1>
+    <p><strong>Version:</strong> 1.1 · <strong>Last updated:</strong> 2026-04-29</p>
+
+    <p>The full markdown source lives in <a href="https://github.com/holdem-agent-bench/holdem-agent-bench/blob/main/docs/methodology.md"><code>docs/methodology.md</code></a> and is the canonical reference. Highlights below.</p>
+
+    <h2>Poker score</h2>
+    <ol>
+      <li><strong>Raw BB/100</strong> — actual win rate with 95% bootstrap CI.</li>
+      <li><strong>Skill BB/100</strong> — Duplicate Poker variance reduction. Each complete template is played at every position with stacks reset to the preset starting stack for each rotation.</li>
+      <li><strong>Elo</strong> — initial 1500, K=32, CI-overlap rule for draws.</li>
+    </ol>
+
+    <h2>Harness score</h2>
+    <p>Every decision records validity, timeout behavior, file-protocol success, latency, MCP/Write/Edit tool traces, and permission errors. Harness score is displayed as an audit metric and is not used to sort the main Elo leaderboard.</p>
+    <p>Runs also record <code>agent_runtime</code> and Claude Code effort. The core benchmark uses <code>claude-code-persistent</code>: one long-lived Claude Code CLI process per player for the whole match, defaulting to <code>--claude-effort low</code>. <code>claude-code</code> is the legacy one-shot subprocess mode, and <code>openrouter</code> is a non-core fast debug path.</p>
+
+    <h2>Eligibility</h2>
+    <table>
+      <tr><th>Requirement</th><th>Threshold</th></tr>
+      <tr><td>Minimum hands</td><td>5,000</td></tr>
+      <tr><td>Minimum sessions</td><td>3</td></tr>
+      <tr><td>Required preset</td><td><code>daily-bench</code> or <code>full-benchmark</code></td></tr>
+      <tr><td>Duplicate templates</td><td>Required for Skill BB/100 eligibility</td></tr>
+      <tr><td>Data completeness</td><td>Public hand history + decision telemetry; hidden hole cards excluded</td></tr>
+      <tr><td>Agent isolation</td><td>Minimal environment allowlist; unsafe Claude permissions disabled</td></tr>
+    </table>
+
+    <h2>Official run artifacts</h2>
+    <p>Official submissions are exported with <code>hab export-run &lt;session_dir&gt; --output official_runs/&lt;session_id&gt;</code>. Each export includes a leaderboard-ready <code>run.json</code>, sanitized per-hand JSON files, decision summaries, <code>checksums.json</code> with SHA-256 hashes, and <code>agent_security</code> metadata. Public leaderboard updates reject runs that used unsafe agent permissions.</p>
+
+    <h2>Tier system</h2>
+    <p>🏅 official · ✅ verified · ⚠️ unverified · 🚩 challenged · ❌ invalidated</p>
+
+    <p>For the full version with formulas, submission process, and reproducibility rules, see the <a href="https://github.com/holdem-agent-bench/holdem-agent-bench/blob/main/docs/methodology.md">markdown source</a>.</p>
+  </main>
+</body>
+</html>

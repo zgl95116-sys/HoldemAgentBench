@@ -1,0 +1,15 @@
+preset:
+  name: daily-bench
+  estimated_cost_usd: 50
+  estimated_time_min: 120
+session:
+  format: 6-max
+  hands_target: 1000
+game:
+  small_blind: 1
+  big_blind: 2
+  starting_stack: 200
+tables:
+  count: 1
+evaluation:
+  variance_reduction: duplicate
