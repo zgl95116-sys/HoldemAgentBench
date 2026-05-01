@@ -1,0 +1,32 @@
+{
+  "action_history": [
+    {
+      "action": "fold",
+      "amount": null,
+      "player_id": "player_a",
+      "pot_before": 3.0,
+      "reason": "84s is too weak even for checking option in BB, GTO indicates fold for this hand in BB situations",
+      "street": "preflop",
+      "tool_calls_used": [
+        "gto_lookup"
+      ]
+    }
+  ],
+  "board": [],
+  "button": "player_a",
+  "duplicate_rotation": null,
+  "duplicate_template_id": null,
+  "hand_id": "h_00003",
+  "hole_cards": {},
+  "pot": 3.0,
+  "showdown_cards": {},
+  "stack_deltas": {
+    "player_a": -1.0,
+    "player_b": 1.0
+  },
+  "starting_stacks": {
+    "player_a": 197.0,
+    "player_b": 203.0
+  },
+  "winner": "player_b"
+}

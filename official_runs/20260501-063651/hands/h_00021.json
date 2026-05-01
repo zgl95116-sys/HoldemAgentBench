@@ -1,0 +1,30 @@
+{
+  "action_history": [
+    {
+      "action": "fold",
+      "amount": null,
+      "player_id": "player_a",
+      "pot_before": 3.0,
+      "reason": "timeout (clock+bank exhausted at 30s)",
+      "street": "preflop",
+      "tool_calls_used": []
+    }
+  ],
+  "board": [],
+  "button": "player_a",
+  "duplicate_rotation": null,
+  "duplicate_template_id": null,
+  "hand_id": "h_00021",
+  "hole_cards": {},
+  "pot": 3.0,
+  "showdown_cards": {},
+  "stack_deltas": {
+    "player_a": -1.0,
+    "player_b": 1.0
+  },
+  "starting_stacks": {
+    "player_a": 190.0,
+    "player_b": 210.0
+  },
+  "winner": "player_b"
+}

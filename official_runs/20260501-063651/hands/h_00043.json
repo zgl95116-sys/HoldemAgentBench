@@ -1,0 +1,91 @@
+{
+  "action_history": [
+    {
+      "action": "call",
+      "amount": 1.0,
+      "player_id": "player_a",
+      "pot_before": 3.0,
+      "reason": "K5s has suited king, GTO indicates 95% call frequency in BB vs open with 3:1 pot odds",
+      "street": "preflop",
+      "tool_calls_used": [
+        "gto_lookup"
+      ]
+    },
+    {
+      "action": "check",
+      "amount": null,
+      "player_id": "player_b",
+      "pot_before": 4.0,
+      "reason": "T6s is a marginal suited hand with some playability. Checking to see a free flop is optimal - not strong enough to raise for value out of position, but has enough potential to continue postflop if we hit.",
+      "street": "preflop",
+      "tool_calls_used": []
+    },
+    {
+      "action": "check",
+      "amount": null,
+      "player_id": "player_b",
+      "pot_before": 4.0,
+      "reason": "T6s completely missed the Q-4-3 flop. Ten-high with no draws. Checking to see opponent's action - will likely fold to any bet with no equity.",
+      "street": "flop",
+      "tool_calls_used": []
+    },
+    {
+      "action": "check",
+      "amount": null,
+      "player_id": "player_a",
+      "pot_before": 4.0,
+      "reason": "invalid_action_fallback:action type 'fold' not legal; legal: ['check', 'raise']",
+      "street": "flop",
+      "tool_calls_used": []
+    },
+    {
+      "action": "check",
+      "amount": null,
+      "player_id": "player_b",
+      "pot_before": 4.0,
+      "reason": "Ten-high with no draws on Q-4-3-2 board. Both players showed weakness checking the flop. Checking to see the river - no reason to bluff with zero equity when opponent could easily have any piece of this board.",
+      "street": "turn",
+      "tool_calls_used": []
+    },
+    {
+      "action": "raise",
+      "amount": 3.0,
+      "player_id": "player_a",
+      "pot_before": 4.0,
+      "reason": "K5s has flush draw and gutshot straight draw (~13 outs), opponent has shown weakness checking twice, betting for value and protection",
+      "street": "turn",
+      "tool_calls_used": []
+    },
+    {
+      "action": "fold",
+      "amount": null,
+      "player_id": "player_b",
+      "pot_before": 7.0,
+      "reason": "Ten-high with no draws on Q-4-3-2 board. Opponent bet after both checked flop. Getting 2.33:1 odds but have zero equity with ten-high. Easy fold - no reason to call with absolutely nothing.",
+      "street": "turn",
+      "tool_calls_used": []
+    }
+  ],
+  "board": [
+    "3h",
+    "4h",
+    "Qc",
+    "2c"
+  ],
+  "button": "player_a",
+  "duplicate_rotation": null,
+  "duplicate_template_id": null,
+  "hand_id": "h_00043",
+  "hole_cards": {},
+  "pot": 7.0,
+  "showdown_cards": {},
+  "stack_deltas": {
+    "player_a": 2.0,
+    "player_b": -2.0
+  },
+  "starting_stacks": {
+    "player_a": 178.0,
+    "player_b": 222.0
+  },
+  "winner": "player_a"
+}

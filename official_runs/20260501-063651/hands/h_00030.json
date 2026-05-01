@@ -1,0 +1,50 @@
+{
+  "action_history": [
+    {
+      "action": "call",
+      "amount": 1.0,
+      "player_id": "player_b",
+      "pot_before": 3.0,
+      "reason": "K3o is weak but King-high has some value against a limping range. Calling to see a cheap flop with position. Can continue if we hit a King, otherwise easy fold.",
+      "street": "preflop",
+      "tool_calls_used": []
+    },
+    {
+      "action": "raise",
+      "amount": 8.0,
+      "player_id": "player_a",
+      "pot_before": 4.0,
+      "reason": "Q3s is weak but suited, GTO indicates 70% raise frequency when opening from SB, raising to build pot and potentially win immediately",
+      "street": "preflop",
+      "tool_calls_used": [
+        "gto_lookup"
+      ]
+    },
+    {
+      "action": "fold",
+      "amount": null,
+      "player_id": "player_b",
+      "pot_before": 10.0,
+      "reason": "K3o is too weak to call a raise. Getting 1.67:1 odds but hand has poor equity against a raising range. Out of position with a dominated King and terrible kicker. Easy fold.",
+      "street": "preflop",
+      "tool_calls_used": []
+    }
+  ],
+  "board": [],
+  "button": "player_b",
+  "duplicate_rotation": null,
+  "duplicate_template_id": null,
+  "hand_id": "h_00030",
+  "hole_cards": {},
+  "pot": 10.0,
+  "showdown_cards": {},
+  "stack_deltas": {
+    "player_a": 2.0,
+    "player_b": -2.0
+  },
+  "starting_stacks": {
+    "player_a": 183.0,
+    "player_b": 217.0
+  },
+  "winner": "player_a"
+}

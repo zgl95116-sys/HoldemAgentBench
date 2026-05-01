@@ -1,0 +1,82 @@
+{
+  "action_history": [
+    {
+      "action": "call",
+      "amount": 1.0,
+      "player_id": "player_a",
+      "pot_before": 3.0,
+      "reason": "J9o has decent playability, GTO indicates 95% call frequency in BB vs open with 3:1 pot odds",
+      "street": "preflop",
+      "tool_calls_used": [
+        "gto_lookup"
+      ]
+    },
+    {
+      "action": "check",
+      "amount": null,
+      "player_id": "player_b",
+      "pot_before": 4.0,
+      "reason": "Q3s is a weak suited hand. Checking to see a free flop is optimal - not strong enough to raise for value against a limping range, but suitedness gives some playability if we hit.",
+      "street": "preflop",
+      "tool_calls_used": []
+    },
+    {
+      "action": "check",
+      "amount": null,
+      "player_id": "player_b",
+      "pot_before": 4.0,
+      "reason": "Q3s with backdoor flush draw and gutshot on A-high board. Checking to see opponent's action - weak made hand with some equity but no reason to lead out.",
+      "street": "flop",
+      "tool_calls_used": []
+    },
+    {
+      "action": "check",
+      "amount": null,
+      "player_id": "player_a",
+      "pot_before": 4.0,
+      "reason": "J9o has jack-high on A-high board with no draws, opponent checked twice showing weakness but bluffing with no equity is risky, checking to give up",
+      "street": "flop",
+      "tool_calls_used": []
+    },
+    {
+      "action": "raise",
+      "amount": 3.0,
+      "player_id": "player_b",
+      "pot_before": 4.0,
+      "reason": "Turn gave me a flush draw plus gutshot (12 outs total). Opponent showed weakness checking the flop. Betting to take the pot down or build value for my draw.",
+      "street": "turn",
+      "tool_calls_used": []
+    },
+    {
+      "action": "fold",
+      "amount": null,
+      "player_id": "player_a",
+      "pot_before": 7.0,
+      "reason": "error:OpenRouter returned no choices: {'error': {'message': 'Provider returned error', 'code': 400}}",
+      "street": "turn",
+      "tool_calls_used": []
+    }
+  ],
+  "board": [
+    "2s",
+    "4s",
+    "Ac",
+    "7c"
+  ],
+  "button": "player_a",
+  "duplicate_rotation": null,
+  "duplicate_template_id": null,
+  "hand_id": "h_00035",
+  "hole_cards": {},
+  "pot": 7.0,
+  "showdown_cards": {},
+  "stack_deltas": {
+    "player_a": -2.0,
+    "player_b": 2.0
+  },
+  "starting_stacks": {
+    "player_a": 185.0,
+    "player_b": 215.0
+  },
+  "winner": "player_b"
+}

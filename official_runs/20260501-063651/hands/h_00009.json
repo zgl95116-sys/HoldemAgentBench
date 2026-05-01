@@ -1,0 +1,77 @@
+{
+  "action_history": [
+    {
+      "action": "call",
+      "amount": 1.0,
+      "player_id": "player_a",
+      "pot_before": 3.0,
+      "reason": "QJs is a premium hand, GTO indicates 80% call/20% 3-bet frequency in BB vs open, getting 3:1 pot odds in limped pot",
+      "street": "preflop",
+      "tool_calls_used": [
+        "gto_lookup"
+      ]
+    },
+    {
+      "action": "check",
+      "amount": null,
+      "player_id": "player_b",
+      "pot_before": 4.0,
+      "reason": "Q7s is a marginal suited hand. Checking to see a free flop is optimal - not strong enough to raise for value, but has enough playability to continue postflop if we hit.",
+      "street": "preflop",
+      "tool_calls_used": []
+    },
+    {
+      "action": "check",
+      "amount": null,
+      "player_id": "player_b",
+      "pot_before": 4.0,
+      "reason": "Completely missed the flop with Q-high. Board is dry but no reason to bluff out of position with no equity. Check and evaluate opponent's action.",
+      "street": "flop",
+      "tool_calls_used": []
+    },
+    {
+      "action": "raise",
+      "amount": 3.0,
+      "player_id": "player_a",
+      "pot_before": 4.0,
+      "reason": "Flush draw with two overcards on dry board, ahead of opponent's Q7s, betting for value with 62% equity",
+      "street": "flop",
+      "tool_calls_used": [
+        "equity_calculator"
+      ]
+    },
+    {
+      "action": "fold",
+      "amount": null,
+      "player_id": "player_b",
+      "pot_before": 7.0,
+      "reason": "Need 43% equity to call but only have 33% with Q-high on this board. Opponent bet into a dry board showing strength. No reason to continue with no pair, no draw.",
+      "street": "flop",
+      "tool_calls_used": [
+        "pot_odds_calculator",
+        "equity_calculator"
+      ]
+    }
+  ],
+  "board": [
+    "3c",
+    "2c",
+    "6s"
+  ],
+  "button": "player_a",
+  "duplicate_rotation": null,
+  "duplicate_template_id": null,
+  "hand_id": "h_00009",
+  "hole_cards": {},
+  "pot": 7.0,
+  "showdown_cards": {},
+  "stack_deltas": {
+    "player_a": 2.0,
+    "player_b": -2.0
+  },
+  "starting_stacks": {
+    "player_a": 198.0,
+    "player_b": 202.0
+  },
+  "winner": "player_a"
+}

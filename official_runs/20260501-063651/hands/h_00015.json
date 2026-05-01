@@ -1,0 +1,52 @@
+{
+  "action_history": [
+    {
+      "action": "call",
+      "amount": 1.0,
+      "player_id": "player_a",
+      "pot_before": 3.0,
+      "reason": "J7o is weak but GTO indicates 95% call frequency in BB vs open with 3:1 pot odds",
+      "street": "preflop",
+      "tool_calls_used": [
+        "gto_lookup"
+      ]
+    },
+    {
+      "action": "raise",
+      "amount": 8.0,
+      "player_id": "player_b",
+      "pot_before": 4.0,
+      "reason": "AQo is a premium hand well ahead of any limping range. Raising for value and isolation. Building the pot with a strong holding that dominates many hands opponent could call with.",
+      "street": "preflop",
+      "tool_calls_used": []
+    },
+    {
+      "action": "fold",
+      "amount": null,
+      "player_id": "player_a",
+      "pot_before": 10.0,
+      "reason": "J7o is too weak to call a raise from AQo, especially out of position with only 1.67:1 pot odds, facing a dominating hand",
+      "street": "preflop",
+      "tool_calls_used": [
+        "gto_lookup"
+      ]
+    }
+  ],
+  "board": [],
+  "button": "player_a",
+  "duplicate_rotation": null,
+  "duplicate_template_id": null,
+  "hand_id": "h_00015",
+  "hole_cards": {},
+  "pot": 10.0,
+  "showdown_cards": {},
+  "stack_deltas": {
+    "player_a": -2.0,
+    "player_b": 2.0
+  },
+  "starting_stacks": {
+    "player_a": 200.0,
+    "player_b": 200.0
+  },
+  "winner": "player_b"
+}

@@ -1,0 +1,30 @@
+{
+  "action_history": [
+    {
+      "action": "fold",
+      "amount": null,
+      "player_id": "player_b",
+      "pot_before": 3.0,
+      "reason": "9-7 offsuit is a weak hand with poor playability. Despite getting 3:1 pot odds, playing this hand out of position will be unprofitable postflop. Better to preserve chips for stronger spots.",
+      "street": "preflop",
+      "tool_calls_used": []
+    }
+  ],
+  "board": [],
+  "button": "player_b",
+  "duplicate_rotation": null,
+  "duplicate_template_id": null,
+  "hand_id": "h_00004",
+  "hole_cards": {},
+  "pot": 3.0,
+  "showdown_cards": {},
+  "stack_deltas": {
+    "player_a": 1.0,
+    "player_b": -1.0
+  },
+  "starting_stacks": {
+    "player_a": 196.0,
+    "player_b": 204.0
+  },
+  "winner": "player_a"
+}

@@ -1,0 +1,43 @@
+{
+  "action_history": [
+    {
+      "action": "raise",
+      "amount": 6.0,
+      "player_id": "player_b",
+      "pot_before": 3.0,
+      "reason": "JTs is a strong suited connector that plays well postflop. Against a SB limp, raising for value and initiative is standard. Isolating weak limping range with a playable hand.",
+      "street": "preflop",
+      "tool_calls_used": [
+        "gto_lookup"
+      ]
+    },
+    {
+      "action": "fold",
+      "amount": null,
+      "player_id": "player_a",
+      "pot_before": 8.0,
+      "reason": "84s is too weak to play facing a raise, GTO chart indicates 100% fold frequency for 84s in SB open HU situation",
+      "street": "preflop",
+      "tool_calls_used": [
+        "gto_lookup"
+      ]
+    }
+  ],
+  "board": [],
+  "button": "player_b",
+  "duplicate_rotation": null,
+  "duplicate_template_id": null,
+  "hand_id": "h_00002",
+  "hole_cards": {},
+  "pot": 8.0,
+  "showdown_cards": {},
+  "stack_deltas": {
+    "player_a": -2.0,
+    "player_b": 2.0
+  },
+  "starting_stacks": {
+    "player_a": 199.0,
+    "player_b": 201.0
+  },
+  "winner": "player_b"
+}
