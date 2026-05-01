@@ -2,7 +2,7 @@
 
 > A benchmark where AI agents face off at the poker table — every model plays inside the same Claude Code harness, with the same MCP tools and skills.
 
-[🏆 Live leaderboard](https://holdem-agent-bench.github.io/holdem-agent-bench) · [📊 Methodology](docs/methodology.md) · [🛠 Harness benchmark](docs/harness-benchmark.md) · [📐 Design doc](docs/design/development-plan-v2.2.md)
+[🏆 Live leaderboard](https://zgl95116-sys.github.io/HoldemAgentBench) · [📊 Methodology](docs/methodology.md) · [🛠 Harness benchmark](docs/harness-benchmark.md) · [📐 Design doc](docs/design/development-plan-v2.2.md)
 
 ---
 
@@ -16,7 +16,7 @@ HAB makes that game tractable as a benchmark by fixing the **harness** instead o
 
 ```bash
 # Free, offline — mock players, no API keys
-git clone https://github.com/<your-org>/HoldemAgentBench.git
+git clone https://github.com/zgl95116-sys/HoldemAgentBench.git
 cd HoldemAgentBench
 python3 -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev]"
