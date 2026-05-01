@@ -39,6 +39,11 @@ def run_command(
     clock: float = typer.Option(90.0, help="base shot-clock seconds per decision"),
     bank_tokens: int = typer.Option(3, help="number of time-bank tokens per player"),
     bank_token_sec: float = typer.Option(60.0, help="seconds per time-bank token"),
+    decision_timeout_sec: float = typer.Option(
+        None,
+        "--decision-timeout-sec",
+        help="Hard cap on time per decision (seconds). Defaults to ~/.hab/config.yaml or 300s.",
+    ),
     unsafe_agent_permissions: bool = typer.Option(
         False,
         "--unsafe-agent-permissions",
@@ -99,7 +104,11 @@ def run_command(
         starting_stack=preset_data["game"]["starting_stack"],
         output_dir=out_dir,
         max_concurrent_agents=defaults.get("max_concurrent_agents", 4),
-        decision_timeout_sec=defaults.get("decision_timeout_sec", 300),
+        decision_timeout_sec=(
+            decision_timeout_sec
+            if decision_timeout_sec is not None
+            else defaults.get("decision_timeout_sec", 300)
+        ),
         seed=seed,
         openrouter_key=or_key,
         anthropic_key=anth_key or None,

@@ -764,10 +764,26 @@ class AgentPool:
         HOME-level config files. Without these, a fresh benchmark HOME blocks
         on onboarding screens and times out before the model sees the poker
         prompt. Keep this file intentionally tiny: no host projects, sessions,
-        todos, memory, plugin cache, or transcript history are copied in.
+        todos, or transcript history are copied in.
         """
         claude_dir = agent_home / ".claude"
         claude_dir.mkdir(parents=True, exist_ok=True)
+
+        # Without a marketplace cache the claude CLI tries (and silently
+        # fails) to git-clone anthropic/claude-plugins-official on every
+        # startup, blowing the shot clock. Symlinking the host's read-only
+        # cache lets claude skip the clone. Falls back to a no-op if the
+        # host hasn't initialised one — e.g. CI runners.
+        host_marketplaces = Path.home() / ".claude" / "plugins" / "marketplaces"
+        if host_marketplaces.is_dir():
+            plugins_dir = claude_dir / "plugins"
+            plugins_dir.mkdir(exist_ok=True)
+            target = plugins_dir / "marketplaces"
+            if not target.exists():
+                try:
+                    target.symlink_to(host_marketplaces)
+                except OSError:
+                    pass
         settings_path = claude_dir / "settings.json"
         if not settings_path.exists():
             settings_path.write_text(
