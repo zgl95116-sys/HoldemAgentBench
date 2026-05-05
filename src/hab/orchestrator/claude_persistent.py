@@ -200,6 +200,33 @@ class PersistentClaudeProcess:
                 log.write(chunk)
                 log.flush()
 
+    async def interrupt(self, *, reason: str) -> None:
+        """Abort claude's current task without killing the process.
+
+        Called when a decision times out or returns bad JSON. Goal: keep
+        the persistent claude alive so the next decision reuses its loaded
+        skills and context, avoiding the 30-60s cold-start cost of a
+        respawn. Sequence: ETX (Ctrl+C) cancels the in-flight task, then
+        a bracketed-paste status note tells claude its previous turn was
+        force-folded.
+        """
+        if (
+            self._master_fd is None
+            or self.proc is None
+            or self.proc.returncode is not None
+        ):
+            return
+        os.write(self._master_fd, b"\x03")
+        await asyncio.sleep(0.5)
+        msg = (
+            f"[orchestrator] previous decision force-folded ({reason}). "
+            f"The next poker decision will arrive shortly; ignore any "
+            f"unfinished work from the previous turn."
+        )
+        os.write(self._master_fd, b"\x1b[200~" + msg.encode("utf-8") + b"\x1b[201~")
+        await asyncio.sleep(0.3)
+        os.write(self._master_fd, b"\r")
+
     async def close(self, *, kill: bool = False) -> None:
         if self.proc and self.proc.returncode is None:
             try:

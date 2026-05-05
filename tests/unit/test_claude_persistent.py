@@ -18,6 +18,43 @@ def test_ready_detection_strips_terminal_control_sequences(tmp_path: Path):
     assert "acceptedits" in proc._plain_output_tail()
 
 
+@pytest.mark.asyncio
+async def test_interrupt_keeps_process_alive(monkeypatch, tmp_path: Path):
+    """interrupt() must not terminate the process — the orchestrator
+    reuses the same persistent claude for the next decision after a
+    timeout. See Bug #1."""
+    proc = PersistentClaudeProcess(
+        player_id="p",
+        workspace=tmp_path,
+        cmd=[sys.executable, "-c", "pass"],
+        env={},
+        log_path=tmp_path / "fake.log",
+    )
+    proc._master_fd = 3
+    proc.proc = type("Stub", (), {"returncode": None, "pid": 99})()
+
+    sends: list[bytes] = []
+    monkeypatch.setattr(
+        "hab.orchestrator.claude_persistent.os.write",
+        lambda fd, data: sends.append(data) or len(data),
+    )
+
+    async def noop_sleep(*_args, **_kw):
+        return None
+
+    monkeypatch.setattr("hab.orchestrator.claude_persistent.asyncio.sleep", noop_sleep)
+
+    await proc.interrupt(reason="shot clock exhausted")
+
+    assert proc.proc.returncode is None, "interrupt() must not terminate the process"
+    blob = b"".join(sends)
+    assert b"\x03" in blob, "interrupt() must send ETX (Ctrl+C)"
+    assert b"force-folded" in blob, "interrupt() must include the reason note"
+    assert b"\x1b[200~" in blob and b"\x1b[201~" in blob, (
+        "status note must use bracketed paste so claude treats it as one input"
+    )
+
+
 def test_send_uses_bracketed_paste(monkeypatch, tmp_path: Path):
     """_send must wrap the prompt in bracketed-paste markers and trail
     with \\r so the claude TUI treats the input as a single atomic paste.

@@ -410,8 +410,11 @@ class AgentPool:
                 return action
             except PersistentClaudeTimeout as e:
                 self._consume_bank(player_id, effective_timeout)
-                await agent.close(kill=True)
-                self._persistent_claude_agents.pop(player_id, None)
+                # Soft-interrupt instead of kill+pop: the persistent
+                # process keeps its conversation context for the next
+                # decision, avoiding a fresh cold start that would burn
+                # 30-60s of skill loading on every timeout.
+                await agent.interrupt(reason="shot clock + bank exhausted")
                 action = _fold(
                     f"timeout (clock+bank exhausted at {effective_timeout:.0f}s)",
                     hand_id,
@@ -430,6 +433,8 @@ class AgentPool:
                 record["api_runtime"] = "claude-code-persistent"
                 return action
             except PersistentClaudeNoOutput as e:
+                # NoOutput = process exited or wedged. Interrupt won't
+                # help; still kill+pop so the next decision spawns fresh.
                 self._consume_bank(player_id, time.time() - t_start)
                 await agent.close(kill=True)
                 self._persistent_claude_agents.pop(player_id, None)
@@ -447,6 +452,9 @@ class AgentPool:
                 return action
             except PersistentClaudeBadJson as e:
                 self._consume_bank(player_id, time.time() - t_start)
+                # Bad JSON means claude responded but in the wrong
+                # shape; interrupt clears its context for next turn.
+                await agent.interrupt(reason=f"bad action json: {e}")
                 raw_bad = af.read_text() if af.exists() else None
                 action = _fold(f"bad_json:{e}", hand_id)
                 self._finish_decision_record(
