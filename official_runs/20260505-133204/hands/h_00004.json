@@ -1,0 +1,99 @@
+{
+  "action_history": [
+    {
+      "action": "call",
+      "amount": 1.0,
+      "player_id": "player_b",
+      "pot_before": 3.0,
+      "reason": "GTO says 97o is a 95% call in BB vs SB open, standard defense.",
+      "street": "preflop",
+      "tool_calls_used": [
+        "gto_lookup"
+      ]
+    },
+    {
+      "action": "check",
+      "amount": null,
+      "player_id": "player_a",
+      "pot_before": 4.0,
+      "reason": "Check with 97o in limped SB vs BB pot, marginal hand out of position",
+      "street": "preflop",
+      "tool_calls_used": [
+        "gto_lookup",
+        "opponent_database_query"
+      ]
+    },
+    {
+      "action": "raise",
+      "amount": 2.0,
+      "player_id": "player_a",
+      "pot_before": 4.0,
+      "reason": "Bet half pot with middle pair + backdoor flush, 75% equity vs BB limper range on monotone board",
+      "street": "flop",
+      "tool_calls_used": [
+        "range_analyzer",
+        "equity_calculator"
+      ]
+    },
+    {
+      "action": "call",
+      "amount": 2.0,
+      "player_id": "player_b",
+      "pot_before": 6.0,
+      "reason": "51% equity vs 25% pot odds, EV +2.08 BB. Middle pair on monotone board.",
+      "street": "flop",
+      "tool_calls_used": [
+        "range_analyzer",
+        "equity_calculator",
+        "pot_odds_calculator"
+      ]
+    },
+    {
+      "action": "raise",
+      "amount": 4.0,
+      "player_id": "player_a",
+      "pot_before": 8.0,
+      "reason": "Bet half pot with 7-high flush on four-flush board, 74.5% equity vs range",
+      "street": "turn",
+      "tool_calls_used": [
+        "range_analyzer",
+        "equity_calculator"
+      ]
+    },
+    {
+      "action": "fold",
+      "amount": null,
+      "player_id": "player_b",
+      "pot_before": 12.0,
+      "reason": "22% equity vs villain's turn barrel range (TT+,AK), need 25%. Four-flush board, no heart, EV -0.48 BB.",
+      "street": "turn",
+      "tool_calls_used": [
+        "range_analyzer",
+        "equity_calculator",
+        "pot_odds_calculator"
+      ]
+    }
+  ],
+  "board": [
+    "3h",
+    "9h",
+    "4h",
+    "2h"
+  ],
+  "button": "player_b",
+  "duplicate_rotation": null,
+  "duplicate_template_id": null,
+  "hand_id": "h_00004",
+  "hole_cards": {},
+  "pot": 12.0,
+  "showdown_cards": {},
+  "stack_deltas": {
+    "player_a": 4.0,
+    "player_b": -4.0
+  },
+  "starting_stacks": {
+    "player_a": 200.0,
+    "player_b": 200.0
+  },
+  "winner": "player_a"
+}

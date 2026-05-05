@@ -1,0 +1,77 @@
+{
+  "action_history": [
+    {
+      "action": "call",
+      "amount": 1.0,
+      "player_id": "player_a",
+      "pot_before": 3.0,
+      "reason": "GTO BB defense with QJs vs SB open (80% call, 20% 3-bet), 77bb effective",
+      "street": "preflop",
+      "tool_calls_used": [
+        "gto_lookup",
+        "opponent_database_query"
+      ]
+    },
+    {
+      "action": "check",
+      "amount": null,
+      "player_id": "player_b",
+      "pot_before": 4.0,
+      "reason": "Q7s is weak, check and see free flop in limped pot.",
+      "street": "preflop",
+      "tool_calls_used": []
+    },
+    {
+      "action": "check",
+      "amount": null,
+      "player_id": "player_b",
+      "pot_before": 4.0,
+      "reason": "Q high on dry board, check and see villain's action.",
+      "street": "flop",
+      "tool_calls_used": []
+    },
+    {
+      "action": "raise",
+      "amount": 2.0,
+      "player_id": "player_a",
+      "pot_before": 4.0,
+      "reason": "Bet half pot with flush draw + overcards after villain checks with Q high",
+      "street": "flop",
+      "tool_calls_used": []
+    },
+    {
+      "action": "fold",
+      "amount": null,
+      "player_id": "player_b",
+      "pot_before": 6.0,
+      "reason": "13% equity vs 25% pot odds required. Q high can't call.",
+      "street": "flop",
+      "tool_calls_used": [
+        "range_analyzer",
+        "equity_calculator",
+        "pot_odds_calculator"
+      ]
+    }
+  ],
+  "board": [
+    "3c",
+    "2c",
+    "6s"
+  ],
+  "button": "player_a",
+  "duplicate_rotation": null,
+  "duplicate_template_id": null,
+  "hand_id": "h_00009",
+  "hole_cards": {},
+  "pot": 6.0,
+  "showdown_cards": {},
+  "stack_deltas": {
+    "player_a": 2.0,
+    "player_b": -2.0
+  },
+  "starting_stacks": {
+    "player_a": 156.0,
+    "player_b": 244.0
+  },
+  "winner": "player_a"
+}

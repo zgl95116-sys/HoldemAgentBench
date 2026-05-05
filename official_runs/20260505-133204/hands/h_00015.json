@@ -1,0 +1,51 @@
+{
+  "action_history": [
+    {
+      "action": "call",
+      "amount": 1.0,
+      "player_id": "player_a",
+      "pot_before": 3.0,
+      "reason": "GTO BB defense with J7o vs SB open (95% call frequency), 75bb effective",
+      "street": "preflop",
+      "tool_calls_used": [
+        "gto_lookup",
+        "opponent_database_query"
+      ]
+    },
+    {
+      "action": "raise",
+      "amount": 6.0,
+      "player_id": "player_b",
+      "pot_before": 4.0,
+      "reason": "AQo is strong, raise for value and isolation.",
+      "street": "preflop",
+      "tool_calls_used": []
+    },
+    {
+      "action": "fold",
+      "amount": null,
+      "player_id": "player_a",
+      "pot_before": 8.0,
+      "reason": "Fold J7o to 3-bet from SB, pot odds 33% needed, equity ~30% vs AQo",
+      "street": "preflop",
+      "tool_calls_used": []
+    }
+  ],
+  "board": [],
+  "button": "player_a",
+  "duplicate_rotation": null,
+  "duplicate_template_id": null,
+  "hand_id": "h_00015",
+  "hole_cards": {},
+  "pot": 8.0,
+  "showdown_cards": {},
+  "stack_deltas": {
+    "player_a": -2.0,
+    "player_b": 2.0
+  },
+  "starting_stacks": {
+    "player_a": 152.0,
+    "player_b": 248.0
+  },
+  "winner": "player_b"
+}

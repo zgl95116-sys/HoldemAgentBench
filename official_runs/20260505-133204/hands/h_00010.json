@@ -1,0 +1,124 @@
+{
+  "action_history": [
+    {
+      "action": "call",
+      "amount": 1.0,
+      "player_id": "player_b",
+      "pot_before": 3.0,
+      "reason": "GTO says Q7s is 95% call in BB vs SB open.",
+      "street": "preflop",
+      "tool_calls_used": [
+        "gto_lookup"
+      ]
+    },
+    {
+      "action": "raise",
+      "amount": 6.0,
+      "player_id": "player_a",
+      "pot_before": 4.0,
+      "reason": "Raise with AJo to isolate BB limper with Q7s, GTO says 100% raise frequency",
+      "street": "preflop",
+      "tool_calls_used": [
+        "gto_lookup"
+      ]
+    },
+    {
+      "action": "call",
+      "amount": 4.0,
+      "player_id": "player_b",
+      "pot_before": 8.0,
+      "reason": "35% equity vs 33% pot odds. Marginal but slightly +EV with suited hand.",
+      "street": "preflop",
+      "tool_calls_used": [
+        "equity_calculator",
+        "pot_odds_calculator"
+      ]
+    },
+    {
+      "action": "check",
+      "amount": null,
+      "player_id": "player_a",
+      "pot_before": 12.0,
+      "reason": "Check with gutshot straight draw + overcard on paired King board",
+      "street": "flop",
+      "tool_calls_used": []
+    },
+    {
+      "action": "check",
+      "amount": null,
+      "player_id": "player_b",
+      "pot_before": 12.0,
+      "reason": "Check back with flush draw, take free card.",
+      "street": "flop",
+      "tool_calls_used": []
+    },
+    {
+      "action": "check",
+      "amount": null,
+      "player_id": "player_a",
+      "pot_before": 12.0,
+      "reason": "Check again with gutshot straight draw, take free river card",
+      "street": "turn",
+      "tool_calls_used": []
+    },
+    {
+      "action": "check",
+      "amount": null,
+      "player_id": "player_b",
+      "pot_before": 12.0,
+      "reason": "Check with flush draw, see river for free.",
+      "street": "turn",
+      "tool_calls_used": []
+    },
+    {
+      "action": "check",
+      "amount": null,
+      "player_id": "player_a",
+      "pot_before": 12.0,
+      "reason": "Check with Ace high on double-paired board with possible flush",
+      "street": "river",
+      "tool_calls_used": []
+    },
+    {
+      "action": "raise",
+      "amount": 6.0,
+      "player_id": "player_b",
+      "pot_before": 12.0,
+      "reason": "Made flush on river, bet half pot for value.",
+      "street": "river",
+      "tool_calls_used": []
+    },
+    {
+      "action": "fold",
+      "amount": null,
+      "player_id": "player_a",
+      "pot_before": 18.0,
+      "reason": "Fold Ace high vs villain's flush, pot odds 25% needed, equity near zero",
+      "street": "river",
+      "tool_calls_used": []
+    }
+  ],
+  "board": [
+    "Kc",
+    "Tc",
+    "Kd",
+    "6s",
+    "6c"
+  ],
+  "button": "player_b",
+  "duplicate_rotation": null,
+  "duplicate_template_id": null,
+  "hand_id": "h_00010",
+  "hole_cards": {},
+  "pot": 18.0,
+  "showdown_cards": {},
+  "stack_deltas": {
+    "player_a": -6.0,
+    "player_b": 6.0
+  },
+  "starting_stacks": {
+    "player_a": 158.0,
+    "player_b": 242.0
+  },
+  "winner": "player_b"
+}

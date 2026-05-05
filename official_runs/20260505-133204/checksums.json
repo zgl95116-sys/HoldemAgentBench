@@ -1,0 +1,92 @@
+{
+  "algorithm": "sha256",
+  "files": [
+    {
+      "path": "run.json",
+      "sha256": "136e9ebbd298edb17ac2cb805dddeb3c73353ed13cddba766992f8d07ccf6d1f"
+    },
+    {
+      "path": "hands/h_00001.json",
+      "sha256": "ae9312d9e7ef145142d5507037fd96ba6d48aa4027b2e46037926c4f7cdee000"
+    },
+    {
+      "path": "hands/h_00002.json",
+      "sha256": "80d153c2a5bb8fccbf52f6e7a7a144a9ed178cd4c1a59aa2a512896ead06b4e3"
+    },
+    {
+      "path": "hands/h_00003.json",
+      "sha256": "3fb8979b5eb8946e2a5b0f1ef645c30d05e75046ef4e619adb6efd54bc12c283"
+    },
+    {
+      "path": "hands/h_00004.json",
+      "sha256": "0d22bb935fdf01e1cbcbff5b499b8e90bece4aca70c37c6278990ed3bdc1674e"
+    },
+    {
+      "path": "hands/h_00005.json",
+      "sha256": "2aa52227aacc8a295d2e5cb5513dfc461f9c4af9ba4a54eba8572a6a9369ec0d"
+    },
+    {
+      "path": "hands/h_00006.json",
+      "sha256": "a2f597918b28cbbaf411abe7ffc32092001016a0558b0db2767bbe4faee86f36"
+    },
+    {
+      "path": "hands/h_00007.json",
+      "sha256": "3cff58e52aaa3cef847f51ec268bf12160aa0b15c886c76dd5b8999704d4c501"
+    },
+    {
+      "path": "hands/h_00008.json",
+      "sha256": "e910c114a4f4b72e79b63407ef5e472dfb034d6b9a1cdc35309be3071c5c9332"
+    },
+    {
+      "path": "hands/h_00009.json",
+      "sha256": "73db87333cb44c64c60ba4a0b5b70efb613c26a65d8e56f5e99d2c22ba0c3b70"
+    },
+    {
+      "path": "hands/h_00010.json",
+      "sha256": "d55a89f0ce1b3192a67d087468c72b547d4684232870b76468600534c41c0127"
+    },
+    {
+      "path": "hands/h_00011.json",
+      "sha256": "3152c45c997c7e1c5ccd8cdc12cab4b65c3a4b4bf0ee42b5528b6db0dbee48ce"
+    },
+    {
+      "path": "hands/h_00012.json",
+      "sha256": "adbe07677814c9fa7c7e6567c0c8c8572f9cc430af32a413f430da5f37f0da7e"
+    },
+    {
+      "path": "hands/h_00013.json",
+      "sha256": "d8943c962993c6222a208fc8863d5aab6cfc59271dba122b62f5e3b6a96e6caf"
+    },
+    {
+      "path": "hands/h_00014.json",
+      "sha256": "ad21837940eff7fa30d5dedef791bad269142285e487ec9147f96a60e39eb0ee"
+    },
+    {
+      "path": "hands/h_00015.json",
+      "sha256": "158b419f8d9e566366471bd1215afda23e81827aa1e0a3b589bacc01004e25d5"
+    },
+    {
+      "path": "hands/h_00016.json",
+      "sha256": "049d347f8fe619e8128bda203e40b9fd205cf6489607c71716597fdbedf7b5c5"
+    },
+    {
+      "path": "hands/h_00017.json",
+      "sha256": "78c0e4a060d7af47cae16680f4fe541fec1263f51a4087f07a411fd9bb8a85a5"
+    },
+    {
+      "path": "hands/h_00018.json",
+      "sha256": "cb79f5913cf44c9e92182a4f0dc19048d45d53318e2155258fdc4896b51bbdd1"
+    },
+    {
+      "path": "hands/h_00019.json",
+      "sha256": "4c4751f132b4cc9901cdb47c27d51b2024c56267066e31aefcd1656e1d6959fe"
+    },
+    {
+      "path": "hands/h_00020.json",
+      "sha256": "f71e60c236b625c90774c0d1e6e1bfc320afddabef7340fb7d18f36a48347b33"
+    }
+  ],
+  "generated_at": "2026-05-05T15:45:48Z",
+  "schema_version": "hab.checksums.v1",
+  "session_id": "20260505-133204"
+}

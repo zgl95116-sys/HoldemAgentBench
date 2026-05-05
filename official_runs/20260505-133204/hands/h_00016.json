@@ -1,0 +1,113 @@
+{
+  "action_history": [
+    {
+      "action": "call",
+      "amount": 1.0,
+      "player_id": "player_b",
+      "pot_before": 3.0,
+      "reason": "GTO says Q8s is 95% call in BB vs SB open.",
+      "street": "preflop",
+      "tool_calls_used": [
+        "gto_lookup"
+      ]
+    },
+    {
+      "action": "check",
+      "amount": null,
+      "player_id": "player_a",
+      "pot_before": 4.0,
+      "reason": "Check with 63o vs BB limper with Q8s, very weak hand",
+      "street": "preflop",
+      "tool_calls_used": [
+        "gto_lookup"
+      ]
+    },
+    {
+      "action": "check",
+      "amount": null,
+      "player_id": "player_a",
+      "pot_before": 4.0,
+      "reason": "Check with 6 high on K-J-9 board, no pair no draw",
+      "street": "flop",
+      "tool_calls_used": []
+    },
+    {
+      "action": "check",
+      "amount": null,
+      "player_id": "player_b",
+      "pot_before": 4.0,
+      "reason": "Gutshot straight draw, check and see free card.",
+      "street": "flop",
+      "tool_calls_used": []
+    },
+    {
+      "action": "check",
+      "amount": null,
+      "player_id": "player_a",
+      "pot_before": 4.0,
+      "reason": "Check with 6 high on A-K-J-9 board, still no pair",
+      "street": "turn",
+      "tool_calls_used": []
+    },
+    {
+      "action": "check",
+      "amount": null,
+      "player_id": "player_b",
+      "pot_before": 4.0,
+      "reason": "Broadway straight draw, check and see river for free.",
+      "street": "turn",
+      "tool_calls_used": []
+    },
+    {
+      "action": "check",
+      "amount": null,
+      "player_id": "player_a",
+      "pot_before": 4.0,
+      "reason": "Check with bottom pair (3s) on river, weak hand",
+      "street": "river",
+      "tool_calls_used": []
+    },
+    {
+      "action": "check",
+      "amount": null,
+      "player_id": "player_b",
+      "pot_before": 4.0,
+      "reason": "Missed draw, Q high, check and showdown.",
+      "street": "river",
+      "tool_calls_used": []
+    }
+  ],
+  "board": [
+    "9d",
+    "Jh",
+    "Ks",
+    "Ah",
+    "3h"
+  ],
+  "button": "player_b",
+  "duplicate_rotation": null,
+  "duplicate_template_id": null,
+  "hand_id": "h_00016",
+  "hole_cards": {
+    "player_a": [
+      "6d",
+      "3s"
+    ]
+  },
+  "pot": 4.0,
+  "showdown_cards": {
+    "player_a": [
+      "6d",
+      "3s"
+    ]
+  },
+  "stack_deltas": {
+    "player_a": 2.0,
+    "player_b": -2.0
+  },
+  "starting_stacks": {
+    "player_a": 150.0,
+    "player_b": 250.0
+  },
+  "winner": "player_a"
+}

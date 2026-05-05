@@ -1,0 +1,74 @@
+{
+  "action_history": [
+    {
+      "action": "call",
+      "amount": 1.0,
+      "player_id": "player_b",
+      "pot_before": 3.0,
+      "reason": "GTO says 99 is 60% call, 40% 3-bet. Calling to see flop.",
+      "street": "preflop",
+      "tool_calls_used": [
+        "gto_lookup"
+      ]
+    },
+    {
+      "action": "check",
+      "amount": null,
+      "player_id": "player_a",
+      "pot_before": 4.0,
+      "reason": "Check with T8o vs BB limper who has pocket 99",
+      "street": "preflop",
+      "tool_calls_used": [
+        "gto_lookup"
+      ]
+    },
+    {
+      "action": "check",
+      "amount": null,
+      "player_id": "player_a",
+      "pot_before": 4.0,
+      "reason": "Check with gutshot straight draw on three-heart board vs pocket 99",
+      "street": "flop",
+      "tool_calls_used": []
+    },
+    {
+      "action": "raise",
+      "amount": 2.0,
+      "player_id": "player_b",
+      "pot_before": 4.0,
+      "reason": "Overpair on monotone flop, bet for value and protection.",
+      "street": "flop",
+      "tool_calls_used": []
+    },
+    {
+      "action": "fold",
+      "amount": null,
+      "player_id": "player_a",
+      "pot_before": 6.0,
+      "reason": "Fold with gutshot draw (9% equity) vs overpair, need 25% pot odds",
+      "street": "flop",
+      "tool_calls_used": []
+    }
+  ],
+  "board": [
+    "Jh",
+    "7h",
+    "4h"
+  ],
+  "button": "player_b",
+  "duplicate_rotation": null,
+  "duplicate_template_id": null,
+  "hand_id": "h_00008",
+  "hole_cards": {},
+  "pot": 6.0,
+  "showdown_cards": {},
+  "stack_deltas": {
+    "player_a": -2.0,
+    "player_b": 2.0
+  },
+  "starting_stacks": {
+    "player_a": 158.0,
+    "player_b": 242.0
+  },
+  "winner": "player_b"
+}

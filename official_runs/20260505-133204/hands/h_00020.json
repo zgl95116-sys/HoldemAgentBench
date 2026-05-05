@@ -1,0 +1,102 @@
+{
+  "action_history": [
+    {
+      "action": "call",
+      "amount": 1.0,
+      "player_id": "player_b",
+      "pot_before": 3.0,
+      "reason": "GTO says KTs is 85% call in BB vs SB open.",
+      "street": "preflop",
+      "tool_calls_used": [
+        "gto_lookup"
+      ]
+    },
+    {
+      "action": "raise",
+      "amount": 6.0,
+      "player_id": "player_a",
+      "pot_before": 4.0,
+      "reason": "Raise with A6o to isolate BB limper with KTs, GTO says 100% raise frequency",
+      "street": "preflop",
+      "tool_calls_used": [
+        "gto_lookup"
+      ]
+    },
+    {
+      "action": "call",
+      "amount": 4.0,
+      "player_id": "player_b",
+      "pot_before": 8.0,
+      "reason": "40% equity vs 33% pot odds. +EV with suited hand.",
+      "street": "preflop",
+      "tool_calls_used": [
+        "equity_calculator",
+        "pot_odds_calculator"
+      ]
+    },
+    {
+      "action": "raise",
+      "amount": 6.0,
+      "player_id": "player_a",
+      "pot_before": 12.0,
+      "reason": "Bet half pot with middle pair + top kicker on J-6-5 flop",
+      "street": "flop",
+      "tool_calls_used": []
+    },
+    {
+      "action": "call",
+      "amount": 6.0,
+      "player_id": "player_b",
+      "pot_before": 18.0,
+      "reason": "24% equity vs 25% pot odds. Marginal but overcards have implied odds.",
+      "street": "flop",
+      "tool_calls_used": [
+        "equity_calculator",
+        "pot_odds_calculator"
+      ]
+    },
+    {
+      "action": "raise",
+      "amount": 12.0,
+      "player_id": "player_a",
+      "pot_before": 24.0,
+      "reason": "Bet half pot with middle pair on turn, value bet vs overcards/draw",
+      "street": "turn",
+      "tool_calls_used": []
+    },
+    {
+      "action": "fold",
+      "amount": null,
+      "player_id": "player_b",
+      "pot_before": 36.0,
+      "reason": "13% equity vs 25% pot odds required. Drawing to 6 outs with one card.",
+      "street": "turn",
+      "tool_calls_used": [
+        "equity_calculator",
+        "pot_odds_calculator"
+      ]
+    }
+  ],
+  "board": [
+    "Jh",
+    "6d",
+    "5s",
+    "3d"
+  ],
+  "button": "player_b",
+  "duplicate_rotation": null,
+  "duplicate_template_id": null,
+  "hand_id": "h_00020",
+  "hole_cards": {},
+  "pot": 36.0,
+  "showdown_cards": {},
+  "stack_deltas": {
+    "player_a": 12.0,
+    "player_b": -12.0
+  },
+  "starting_stacks": {
+    "player_a": 144.0,
+    "player_b": 256.0
+  },
+  "winner": "player_a"
+}

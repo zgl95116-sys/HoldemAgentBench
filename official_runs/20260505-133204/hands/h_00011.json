@@ -1,0 +1,73 @@
+{
+  "action_history": [
+    {
+      "action": "call",
+      "amount": 1.0,
+      "player_id": "player_a",
+      "pot_before": 3.0,
+      "reason": "GTO BB defense with A8s vs SB open (95% call frequency), 75bb effective",
+      "street": "preflop",
+      "tool_calls_used": [
+        "gto_lookup",
+        "opponent_database_query"
+      ]
+    },
+    {
+      "action": "check",
+      "amount": null,
+      "player_id": "player_b",
+      "pot_before": 4.0,
+      "reason": "84o is very weak, check and see free flop in limped pot.",
+      "street": "preflop",
+      "tool_calls_used": []
+    },
+    {
+      "action": "check",
+      "amount": null,
+      "player_id": "player_b",
+      "pot_before": 4.0,
+      "reason": "8 high on paired board, check and see villain's action.",
+      "street": "flop",
+      "tool_calls_used": []
+    },
+    {
+      "action": "raise",
+      "amount": 2.0,
+      "player_id": "player_a",
+      "pot_before": 4.0,
+      "reason": "Bet half pot with Ace high vs villain's 8 high on paired board",
+      "street": "flop",
+      "tool_calls_used": []
+    },
+    {
+      "action": "fold",
+      "amount": null,
+      "player_id": "player_b",
+      "pot_before": 6.0,
+      "reason": "8 high can't call a bet.",
+      "street": "flop",
+      "tool_calls_used": []
+    }
+  ],
+  "board": [
+    "3d",
+    "7d",
+    "7h"
+  ],
+  "button": "player_a",
+  "duplicate_rotation": null,
+  "duplicate_template_id": null,
+  "hand_id": "h_00011",
+  "hole_cards": {},
+  "pot": 6.0,
+  "showdown_cards": {},
+  "stack_deltas": {
+    "player_a": 2.0,
+    "player_b": -2.0
+  },
+  "starting_stacks": {
+    "player_a": 152.0,
+    "player_b": 248.0
+  },
+  "winner": "player_a"
+}
