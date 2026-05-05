@@ -2,7 +2,7 @@
 
 > A benchmark where AI agents face off at the poker table — every model plays inside the same Claude Code harness, with the same MCP tools and skills.
 
-[🏆 Live leaderboard](https://zgl95116-sys.github.io/HoldemAgentBench) · [📊 Methodology](docs/methodology.md) · [🛠 Harness benchmark](docs/harness-benchmark.md) · [📐 Design doc](docs/design/development-plan-v2.2.md)
+[🏆 Live leaderboard](https://zgl95116-sys.github.io/HoldemAgentBench) · [📊 Methodology](docs/methodology.md) · [🃏 Anatomy of one decision](docs/sample-run.md) · [🛠 Harness benchmark](docs/harness-benchmark.md) · [📐 Design doc](docs/design/development-plan-v2.2.md)
 
 ---
 
