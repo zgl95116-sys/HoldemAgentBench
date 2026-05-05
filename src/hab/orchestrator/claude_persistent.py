@@ -107,27 +107,40 @@ class PersistentClaudeProcess:
         if self._master_fd is None:
             raise PersistentClaudeError("persistent Claude process not started")
         payload = " ".join(prompt.split()).encode("utf-8")
-        for i in range(0, len(payload), 96):
-            os.write(self._master_fd, payload[i : i + 96])
-            time.sleep(0.01)
-        time.sleep(0.15)
-        os.write(self._master_fd, b"\r")
-        time.sleep(0.75)
+        # Wrap in bracketed-paste markers so the claude TUI treats this as
+        # a single atomic paste. Without this, prompts longer than the
+        # input box width get chopped at line wraps and never submit
+        # cleanly. Bracketed paste is the standard "input complete" signal.
+        os.write(self._master_fd, b"\x1b[200~")
+        for i in range(0, len(payload), 4096):
+            os.write(self._master_fd, payload[i : i + 4096])
+        os.write(self._master_fd, b"\x1b[201~")
+        time.sleep(0.4)
         os.write(self._master_fd, b"\r")
 
-    async def _wait_for_ready(self, timeout: float = 20.0) -> None:
+    async def _wait_for_ready(self, timeout: float = 60.0) -> None:
         deadline = time.time() + timeout
+        # Markers must be space-stripped because _plain_output_tail strips
+        # whitespace. Cover every permission-mode banner claude shows in
+        # the status row: acceptEdits, auto, dontAsk, bypassPermissions,
+        # plus the universal "shift+tab to cycle" hint that appears in all
+        # interactive modes.
+        ready_markers = (
+            "acceptedits",
+            "ctrl+gtoedit",
+            "shift+tabtocycle",
+            "automode",
+            "don'task",
+            "dontask",
+            "bypasspermissions",
+        )
         while time.time() < deadline:
             if self.proc and self.proc.returncode is not None:
                 raise PersistentClaudeNoOutput(
                     f"claude exited with code {self.proc.returncode}"
                 )
             tail = self._plain_output_tail()
-            if (
-                "acceptedits" in tail
-                or "ctrl+g to edit" in tail
-                or "shift+tab to cycle" in tail
-            ):
+            if any(m in tail for m in ready_markers):
                 self._ready = True
                 return
             await asyncio.sleep(0.1)

@@ -159,7 +159,10 @@ def test_build_env_uses_allowlist_not_host_secrets(tmp_path: Path, monkeypatch):
     )
     env = pool._build_env("p", "openai/gpt-5", tmp_path)
     assert env["ANTHROPIC_API_KEY"] == "hab-token"
-    assert env["ANTHROPIC_AUTH_TOKEN"] == "hab-token"
+    # Setting ANTHROPIC_AUTH_TOKEN alongside ANTHROPIC_API_KEY makes
+    # claude warn about an auth conflict and stall; the agent must set
+    # exactly one. See agent_pool.py for the explicit deletion.
+    assert "ANTHROPIC_AUTH_TOKEN" not in env
     assert env["ANTHROPIC_BASE_URL"] == "http://shim"
     assert env["ANTHROPIC_MODEL"] == "openai/gpt-5"
     assert env["PLAYER_ID"] == "p"

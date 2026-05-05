@@ -534,13 +534,9 @@ class AgentPool:
             cmd = [
                 self.claude_binary,
                 "-p", prompt,
-                # --bare skips hooks, LSP, plugin sync, attribution, auto-memory,
-                # background prefetches, keychain reads, and CLAUDE.md auto-discovery.
-                # We don't need any of those for headless agent invocations.
-                "--bare",
                 "--effort", self.claude_effort,
-                # --bare disables CLAUDE.md auto-discovery; inline its content
-                # into the system prompt instead. Only on first call (resume keeps it).
+                # Inject CLAUDE.md as a system-prompt suffix on first call;
+                # subsequent calls resume the session and keep it.
                 *(
                     [
                         "--append-system-prompt",
@@ -744,7 +740,9 @@ class AgentPool:
         env.update({
             "HOME": str(agent_home),
             "ANTHROPIC_BASE_URL": self.shim_url,
-            "ANTHROPIC_AUTH_TOKEN": token,
+            # Setting both ANTHROPIC_API_KEY and ANTHROPIC_AUTH_TOKEN
+            # makes claude warn about auth conflict and stall on startup
+            # before showing the input prompt; pick one.
             "ANTHROPIC_API_KEY": token,
             "ANTHROPIC_MODEL": model,
             "PLAYER_ID": player_id,
@@ -943,9 +941,13 @@ class AgentPool:
         player_id: str,
         session_id: str,
     ) -> list[str]:
+        # NOTE: do not pass --bare. As of claude CLI v2.1.128 --bare strips
+        # the Write built-in tool, which makes it impossible for the agent
+        # to create actions/action.json. The trade-off is paying for hooks
+        # / LSP / plugin sync at startup; the host-marketplace symlink set
+        # up by _bootstrap_agent_home keeps that cost bounded.
         cmd = [
             self.claude_binary,
-            "--bare",
             "--effort", self.claude_effort,
             "--append-system-prompt",
             (workspace / "CLAUDE.md").read_text() if (workspace / "CLAUDE.md").exists() else "",
