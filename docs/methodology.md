@@ -122,6 +122,19 @@ These thresholds let the first real submissions land. They will tighten back tow
 
 Runs from non-headline runtimes (`openrouter`, `claude-code` one-shot) live in `comparison_runs/`. They are useful for comparing the same model with and without the Claude Code harness, but **do not enter the official ranking**: putting a no-harness run on the same leaderboard as a harness-mediated run would be unfair (no file-protocol overhead, no skill loading, no shot-clock pressure on the model itself).
 
+## 7a. Seed policy
+
+`hab run` is deterministic given a master seed: per-hand RNG is `seed * 1_000_003 + hand_index`. This is intentional — without it `comparison_runs/` would be impossible (cards must match for variance reduction) and reviewers couldn't reproduce a submission. But it means **a single seed is one specific deck of cards, not "poker in general"**. A 200-hand run on seed 42 measures "how this model plays *this* sequence of 200 deals", not "how this model plays".
+
+### v1.1 — current bootstrap policy
+
+- Each official run **must declare its seed in the filename** (e.g. `official_runs/<sid>-seed-<N>/`). The default `--seed 42` from the CLI is fine for testing but a leaderboard submission should pick something else if it's the second run for the same model — duplicate-seed runs are deduplicated when CI ingests them.
+- Aggregating across seeds is the leaderboard's job. The `LeaderboardGenerator` already concatenates per-hand stack deltas across all sessions for a model — running the same model on two different seeds and committing both runs is how a single model's hands count climbs toward the eligibility floor.
+
+### v1.0 — long-term seed pool
+
+Once we have multiple submissions per model, official runs will be required to use a **fixed seed pool** (e.g. seeds 1..20, 100 hands each → 2000 hands per pool-pass). This pins the variance reduction across submissions: a new model gets compared on the *exact same dealing sequences* as previous submissions, not a private favourable shuffle. The pool is published in this file when it's locked in.
+
 ## 8. Tier System
 
 - 🏅 **Official** — run by the maintainers under standard conditions
