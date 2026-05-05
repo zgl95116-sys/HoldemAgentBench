@@ -26,6 +26,16 @@ def validate_run_policy(run_json: dict, source: Path) -> list[str]:
         errors.append("run export must not include private workspaces")
     if run_json.get("schema_version") != "hab.run.v1":
         errors.append(f"unsupported run schema in {source}")
+    # Only the headline runtime ranks. The other runtimes still produce
+    # exportable runs (in comparison_runs/), but mixing harness-bearing
+    # runs with no-harness runs on the same leaderboard would be unfair.
+    runtime = run_json.get("agent_runtime")
+    if runtime != "claude-code-persistent":
+        errors.append(
+            f"only claude-code-persistent runs are eligible for the official "
+            f"leaderboard (this run uses {runtime!r}); move non-headline runs "
+            f"to comparison_runs/"
+        )
     return errors
 
 

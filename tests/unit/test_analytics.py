@@ -229,7 +229,7 @@ def test_leaderboard_includes_harness_metrics():
 
 def test_leaderboard_eligibility_filter(tmp_path: Path):
     gen = LeaderboardGenerator()
-    # Only 100 hands → not eligible (needs 5000)
+    # 100 hands < MIN_HANDS=200 → not eligible
     gen.ingest_session({
         "ended_at": "2026-04-25T00:00:00Z",
         "players": {"player_a": "m1", "player_b": "m2"},
@@ -239,3 +239,22 @@ def test_leaderboard_eligibility_filter(tmp_path: Path):
     assert eligible["entries"] == []
     all_entries = gen.build(only_eligible=False)
     assert len(all_entries["entries"]) == 2
+
+
+def test_leaderboard_eligibility_admits_run_at_bootstrap_threshold():
+    """200-hand single-session run with no duplicate templates should
+    rank under the bootstrap thresholds. If this regresses, the floor
+    has moved and docs/methodology.md needs updating in lock-step."""
+    gen = LeaderboardGenerator()
+    gen.ingest_session({
+        "ended_at": "2026-05-05T00:00:00Z",
+        "players": {"player_a": "m1", "player_b": "m2"},
+        "hands": [{"stack_deltas": {"player_a": 1, "player_b": -1}}] * 200,
+    })
+    eligible = gen.build(only_eligible=True)
+    assert len(eligible["entries"]) == 2
+    # No templates → Skill BB/100 must be unavailable, but Elo still ranks.
+    for entry in eligible["entries"]:
+        assert entry["skill_bb_per_100"]["point"] is None
+        assert entry["skill_bb_per_100"]["source"] == "not_available"
+        assert entry["elo"] is not None

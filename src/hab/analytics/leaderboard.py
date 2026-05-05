@@ -9,9 +9,15 @@ from hab.analytics.elo import EloSystem
 from hab.analytics.stats import PlayerStats, bootstrap_ci
 from hab.orchestrator.decision_metrics import summarize_decisions
 
-# Eligibility (from spec §13.5)
-MIN_HANDS = 5000
-MIN_SESSIONS = 3
+# Eligibility for the public Top 5. The original spec §13.5 set MIN_HANDS
+# at 5000 with duplicate templates required, which is the right floor
+# once the project has enough submissions to fill it. While bootstrapping
+# we lower the bar so the first real run can land — and we drop the
+# duplicate-templates hard requirement: Skill BB/100 stays unavailable
+# without templates, but the run still ranks via Elo + raw BB/100. These
+# numbers tighten as more data lands; see docs/methodology.md.
+MIN_HANDS = 200
+MIN_SESSIONS = 1
 
 
 class LeaderboardGenerator:
@@ -147,7 +153,6 @@ class LeaderboardGenerator:
             if only_eligible and (
                 agg["hands"] < MIN_HANDS
                 or agg["sessions"] < MIN_SESSIONS
-                or agg["duplicate_templates"] == 0
             ):
                 continue
             skill_point = None

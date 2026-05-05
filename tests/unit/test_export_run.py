@@ -1,6 +1,8 @@
 import json
 from pathlib import Path
 
+import pytest
+
 from hab.cli.export import build_run_export, verify_export, write_run_export
 from scripts.update_leaderboard import validate_run_policy
 
@@ -154,9 +156,41 @@ def test_leaderboard_policy_rejects_unsafe_public_runs(tmp_path: Path):
             "schema_version": "hab.run.v1",
             "agent_security": {"unsafe_permissions": True},
             "privacy": {"contains_private_workspaces": False},
+            "agent_runtime": "claude-code-persistent",
         },
         tmp_path / "run.json",
     )
     assert errors == [
         "unsafe agent permissions are not allowed on public leaderboards"
     ]
+
+
+def _ok_run_skeleton(runtime: str) -> dict:
+    return {
+        "schema_version": "hab.run.v1",
+        "agent_security": {"unsafe_permissions": False},
+        "privacy": {"contains_private_workspaces": False},
+        "agent_runtime": runtime,
+    }
+
+
+def test_leaderboard_policy_accepts_claude_code_persistent(tmp_path: Path):
+    errors = validate_run_policy(
+        _ok_run_skeleton("claude-code-persistent"), tmp_path / "run.json"
+    )
+    assert errors == []
+
+
+@pytest.mark.parametrize("runtime", ["openrouter", "claude-code", "mock", None])
+def test_leaderboard_policy_rejects_non_headline_runtimes(
+    tmp_path: Path, runtime: str | None
+):
+    """Only the headline runtime ranks. Mixing harness-bearing runs with
+    no-harness runs on the leaderboard would be unfair (no file protocol
+    overhead, no skill loading, no shot-clock pressure)."""
+    errors = validate_run_policy(
+        _ok_run_skeleton(runtime), tmp_path / "run.json"
+    )
+    assert any("only claude-code-persistent" in e for e in errors), (
+        f"runtime={runtime!r} should be rejected, got errors={errors}"
+    )
