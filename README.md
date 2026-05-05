@@ -33,7 +33,10 @@ hab export-run /tmp/hab-test/<session-id> \
 # Real models — heads-up, OpenRouter + claude CLI
 export OPENROUTER_API_KEY=sk-or-...
 hab init
-hab run quickstart --models anthropic/claude-opus-4-7,openai/gpt-5
+# First-turn cold-start of the persistent claude can take a few minutes
+# while it loads CLAUDE.md and skills/, so widen the per-decision cap.
+hab run quickstart --models anthropic/claude-opus-4-7,openai/gpt-5 \
+  --decision-timeout-sec 600
 
 # Cheap fast runtime for debugging (skip Claude Code, talk to OpenRouter directly)
 hab run quickstart \
