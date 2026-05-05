@@ -1,0 +1,162 @@
+{
+  "agent_runtime": "claude-code-persistent",
+  "agent_security": {
+    "environment": "allowlist",
+    "filesystem_sandbox": "not_enforced",
+    "permission_mode": "acceptEdits_with_tool_allowlist",
+    "unsafe_permissions": false
+  },
+  "big_blind": 2,
+  "chip_accounting": "continuous_stack",
+  "decision_summary": {
+    "decisions": 1,
+    "overall": {
+      "avg_elapsed_sec": 152.0001,
+      "avg_timeout_fraction": 0.3167,
+      "avg_tool_calls": 4.0,
+      "bad_json": 0,
+      "decisions": 1,
+      "harness_score": 96.8,
+      "invalid_actions": 0,
+      "mcp_tool_calls": 2,
+      "no_outputs": 0,
+      "p95_elapsed_sec": 152.0001,
+      "permission_error_rate": 0.0,
+      "permission_errors": 0,
+      "protocol_error_rate": 0.0,
+      "spawn_failed": 0,
+      "timeout_rate": 0.0,
+      "timeouts": 0,
+      "tool_calls": 4,
+      "valid_action_rate": 1.0,
+      "valid_actions": 1,
+      "write_success_rate": 1.0,
+      "write_successes": 1,
+      "write_tool_calls": 1
+    },
+    "per_model": {
+      "deepseek/deepseek-v3.2": {
+        "avg_elapsed_sec": 152.0001,
+        "avg_timeout_fraction": 0.3167,
+        "avg_tool_calls": 4.0,
+        "bad_json": 0,
+        "decisions": 1,
+        "harness_score": 96.8,
+        "invalid_actions": 0,
+        "mcp_tool_calls": 2,
+        "no_outputs": 0,
+        "p95_elapsed_sec": 152.0001,
+        "permission_error_rate": 0.0,
+        "permission_errors": 0,
+        "protocol_error_rate": 0.0,
+        "spawn_failed": 0,
+        "timeout_rate": 0.0,
+        "timeouts": 0,
+        "tool_calls": 4,
+        "valid_action_rate": 1.0,
+        "valid_actions": 1,
+        "write_success_rate": 1.0,
+        "write_successes": 1,
+        "write_tool_calls": 1
+      }
+    },
+    "schema_version": "hab.decision_summary.v1"
+  },
+  "decisions": [
+    {
+      "action": "fold",
+      "agent_kind": "claude-code-persistent",
+      "agent_session_id": "c3c3e6e7-aae8-4dab-a060-1841ed5bb738",
+      "amount": null,
+      "api_runtime": "claude-code-persistent",
+      "bank_after_sec": 180.0,
+      "bank_before_sec": 180.0,
+      "decision_clock_sec": 300.0,
+      "effective_timeout_sec": 480.0,
+      "elapsed_sec": 152.0001,
+      "ended_at": "2026-05-05T08:06:09Z",
+      "engine_valid": true,
+      "engine_validation_error": null,
+      "hand_id": "h_00001",
+      "mcp_tool_call_count": 2,
+      "model": "deepseek/deepseek-v3.2",
+      "outcome": "valid_action",
+      "permission_error_count": 0,
+      "persistent_process_id": 59611,
+      "player_id": "player_a",
+      "raw_action_bytes": 183,
+      "reason": "GTO says fold 100% with 42o vs SB open",
+      "return_code": null,
+      "schema_version": "hab.decision.v1",
+      "started_at": "2026-05-05T08:03:37Z",
+      "timeout_fraction": 0.3167,
+      "tool_calls_used": [
+        "opponent_database_query",
+        "gto_lookup"
+      ],
+      "unsafe_permissions": false,
+      "write_success": true,
+      "write_tool_call_count": 1
+    }
+  ],
+  "decisions_recorded": 1,
+  "duplicate_mode": null,
+  "duplicate_templates": [],
+  "duplicate_templates_enabled": false,
+  "ended_at": "2026-05-05T08:06:09Z",
+  "exported_at": "2026-05-05T08:37:47Z",
+  "final_stacks": {
+    "player_a": 199.0,
+    "player_b": 201.0
+  },
+  "hands": [
+    {
+      "action_history": [
+        {
+          "action": "fold",
+          "amount": null,
+          "player_id": "player_a",
+          "pot_before": 3.0,
+          "reason": "GTO says fold 100% with 42o vs SB open",
+          "street": "preflop",
+          "tool_calls_used": [
+            "opponent_database_query",
+            "gto_lookup"
+          ]
+        }
+      ],
+      "board": [],
+      "button": "player_a",
+      "duplicate_rotation": null,
+      "duplicate_template_id": null,
+      "hand_id": "h_00001",
+      "hole_cards": {},
+      "pot": 3.0,
+      "showdown_cards": {},
+      "stack_deltas": {
+        "player_a": -1.0,
+        "player_b": 1.0
+      },
+      "starting_stacks": {
+        "player_a": 200.0,
+        "player_b": 200.0
+      },
+      "winner": "player_b"
+    }
+  ],
+  "hands_played": 1,
+  "hands_recorded": 1,
+  "hands_target": 1,
+  "players": {
+    "player_a": "deepseek/deepseek-v3.2",
+    "player_b": "z-ai/glm-5"
+  },
+  "privacy": {
+    "contains_private_workspaces": false,
+    "hole_cards_policy": "only showdown-public cards are exported"
+  },
+  "schema_version": "hab.run.v1",
+  "session_id": "20260505-080337",
+  "small_blind": 1,
+  "starting_stack": 200
+}

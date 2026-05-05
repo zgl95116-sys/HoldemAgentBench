@@ -1,0 +1,16 @@
+{
+  "algorithm": "sha256",
+  "files": [
+    {
+      "path": "run.json",
+      "sha256": "f150442a17bca5a5a431432de63f7087e2a9608447e7a6c2908ccce49576fd64"
+    },
+    {
+      "path": "hands/h_00001.json",
+      "sha256": "8565bf096a6095e310882e789bfa4ab2d018704aa862578e4277b5ffbdeafe2c"
+    }
+  ],
+  "generated_at": "2026-05-05T08:37:47Z",
+  "schema_version": "hab.checksums.v1",
+  "session_id": "20260505-080337"
+}
