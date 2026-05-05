@@ -12,3 +12,4 @@ htmlcov/
 hab-sessions/
 .env
 .DS_Store
+.claude/

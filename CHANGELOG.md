@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file. Format foll
 
 ## [Unreleased]
 
+### Changed
+- **Leaderboard now restricted to the `claude-code-persistent` runtime.** Mixing harness-bearing runs with no-harness `openrouter` runs on the same ranking would be unfair (no file-protocol overhead, no skill loading, no shot-clock pressure on the model). The existing 50-hand `openrouter` run moved from `official_runs/` to `comparison_runs/`.
+- **Bootstrap eligibility thresholds.** `MIN_HANDS` 5000 → 200, `MIN_SESSIONS` 3 → 1, dropped the hard duplicate-templates requirement (Skill BB/100 stays "—" without templates but Elo + raw BB/100 still rank). Targets in `docs/methodology.md`; will tighten as more submissions land.
+
 ### Fixed
 - **`claude-code-persistent` runtime is now functional end-to-end.** The headline path advertised in the README ("every model plays inside the same Claude Code harness") had been silently degenerating into 100% timeout-folds against claude CLI v2.1.x. Five layered bugs uncovered and fixed (commits `532ae08`, `dcc8294`, `4fcde07`):
   - `_send` now wraps prompts in bracketed-paste markers (`\x1b[200~ ... \x1b[201~ + \r`); without this, prompts longer than the TUI input width were chopped at line wraps and never submitted.

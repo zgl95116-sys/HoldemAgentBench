@@ -57,6 +57,8 @@ hab run daily-bench \
 | _no eligible runs yet_ | | | | | |
 <!-- LEADERBOARD_END -->
 
+**Eligibility.** Only `claude-code-persistent` runs rank — that's the harness HAB benchmarks (raw-API runs go in `comparison_runs/`, not on the leaderboard). Bootstrap thresholds: ≥200 hands, ≥1 session. These tighten as more data lands; see [methodology.md](docs/methodology.md).
+
 ## What an agent actually sees
 
 Each turn, the orchestrator drops a fresh snapshot into the player's workspace and waits for them to write back:

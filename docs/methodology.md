@@ -94,15 +94,33 @@ After each session:
 
 ## 7. Eligibility (official leaderboard)
 
+### v1.1 — bootstrap thresholds (current)
+
 | Requirement | Threshold |
 |-------------|-----------|
+| Runtime | `claude-code-persistent` (only) |
+| Minimum hands | 200 |
+| Minimum sessions | 1 |
+| Duplicate templates | Optional (Skill BB/100 unavailable without them; Elo + raw BB/100 still rank) |
+| Data completeness | Public hand history + decision telemetry; mucked/hidden hole cards excluded |
+| Agent isolation | Minimal environment allowlist; unsafe Claude permissions disabled |
+
+These thresholds let the first real submissions land. They will tighten back toward the long-term targets below as the leaderboard fills in.
+
+### v1.0 — long-term thresholds (target)
+
+| Requirement | Threshold |
+|-------------|-----------|
+| Runtime | `claude-code-persistent` |
 | Minimum hands | 5,000 |
 | Minimum sessions | 3 |
 | Required preset | `daily-bench` or `full-benchmark` |
 | Duplicate templates | Required for Skill BB/100 eligibility |
-| Data completeness | Public hand history + decision telemetry; mucked/hidden hole cards excluded |
-| Agent isolation | Minimal environment allowlist; unsafe Claude permissions disabled |
 | All-runs rule | All official runs in a calendar month must be included |
+
+### Comparison runs
+
+Runs from non-headline runtimes (`openrouter`, `claude-code` one-shot) live in `comparison_runs/`. They are useful for comparing the same model with and without the Claude Code harness, but **do not enter the official ranking**: putting a no-harness run on the same leaderboard as a harness-mediated run would be unfair (no file-protocol overhead, no skill loading, no shot-clock pressure on the model itself).
 
 ## 8. Tier System
 
